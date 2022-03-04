@@ -63,35 +63,44 @@ app.get("/", function(req, res) {
   });
 });
 
+// Add and display
 app.post("/", function(req, res) {
 
   const itemName = req.body.newItem;
-
   const item = new Item({
     name: itemName
   });
-
   item.save();
   res.redirect("/");
+});
 
-})
+app.post("/delete", function(req, res){
+  const checkedItemId = req.body.checkbox;
+
+  Item.findByIdAndRemove(checkedItemId, function(err){
+    if(!err){
+      console.log("Successfully Deleted checked item!");
+      res.redirect("/");
+    }
+  })
+});
 
 app.get("/work", function(req, res) {
   res.render("list", {
     listTitle: "Work List",
     newListItems: workItems
   });
-})
+});
 
 app.post("/work", function(req, res) {
   let item = req.body.newItem;
   workItems.push(item);
   res.redirect("/work");
-})
+});
 
 app.get("/about", function(req, res) {
   res.render("about");
-})
+});
 app.listen(3000, function() {
   console.log("Server started and listening on port 3000");
 });
