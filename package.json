@@ -12,6 +12,9 @@
   },
   "author": "TP Pham",
   "license": "ISC",
+  "engines": {
+    "node": "14.x"
+  },
   "bugs": {
     "url": "https://github.com/tppham94/ToDo-List/issues"
   },

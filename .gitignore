@@ -107,3 +107,8 @@ Thumbs.db
 !.editorconfig
 !.phpcs.xml.dist
 !.env.example
+
+/node_modules
+npm-debug.log
+.DS_Store
+/*.env
